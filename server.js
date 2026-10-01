@@ -6,10 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Inicializa Gemini con la clave API guardada en Render
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-app.post('/api/chat', async (req, res) => {
+// Ruta principal (/)
+app.post('/', async (req, res) => {
   try {
     const { message } = req.body;
 
@@ -30,7 +30,7 @@ app.post('/api/chat', async (req, res) => {
 
     res.json({ reply: text });
   } catch (error) {
-    console.error("Error en la llamada a Gemini:", error);
+    console.error("Error en Gemini:", error);
     res.status(500).json({ reply: "Épale mano, hubo un detalle en la conexión. Intenta de nuevo en un segundo." });
   }
 });
