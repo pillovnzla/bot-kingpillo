@@ -6,15 +6,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Se conecta con la clave guardada en Render
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.post('/', async (req, res) => {
   try {
     const { message } = req.body;
 
-    // Usamos el nombre exacto que exige la API en el log
     const model = genAI.getGenerativeModel({
-      model: "gemini-3.8-flash",
+      model: "gemini-2.5-flash",
       systemInstruction: `Eres el asistente virtual oficial del blog de King Pillo.
       Tus instrucciones y reglas son las siguientes:
       1. Tu función es orientar a los visitantes sobre todo el contenido del blog de King Pillo: mods variados (incluyendo el mod de la Toyota Land Cruiser Machito), juegos completos para PC, juegos para Android y contenido para emuladores.
