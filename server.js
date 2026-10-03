@@ -12,8 +12,9 @@ app.post('/', async (req, res) => {
   try {
     const { message } = req.body;
 
+    // Usamos el nombre de modelo 2.0-flash que es el estándar actual
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
+      model: "gemini-2.0-flash",
       systemInstruction: `Eres el asistente virtual oficial del blog de King Pillo.
       Tus instrucciones y reglas son las siguientes:
       1. Tu función es orientar a los visitantes sobre todo el contenido del blog de King Pillo: mods variados (incluyendo el mod de la Toyota Land Cruiser Machito), juegos completos para PC, juegos para Android y contenido para emuladores.
